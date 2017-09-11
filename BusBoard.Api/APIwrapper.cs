@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    public class StopPoints
+    class APIwrapper
     {
-        public string id;
-        public string commonName;
+        public string status;
+        public Location result;
 
     }
 }
