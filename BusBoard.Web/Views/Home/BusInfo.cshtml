@@ -1,10 +1,25 @@
 ﻿@model BusBoard.Web.ViewModels.BusInfo
 @{
-  ViewBag.Title = "Bus Information";
+    ViewBag.Title = "Bus Information";
 }
-
+@using BusBoard.Api;
+@using Newtonsoft.Json;
 <h2>BusInfo</h2>
 
 <div class="row">
-    <p>You entered postcode @Model.PostCode</p>
+    @if (@Model.PostCode == "NW5 1TL")
+    {
+        <p>You entered the Softwire office postcode!</p>
+    }
+    else
+    {
+        <p>You entered postcode @Model.PostCode</p>
+    }
+
+    
+
+    <p>This is the test string! @StringPrinter.TestFunction("HelloWorld"); </p>
+
+    
+
 </div>
