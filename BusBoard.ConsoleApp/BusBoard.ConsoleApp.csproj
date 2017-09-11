@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Bus.cs" />
     <Compile Include="BusBoard.cs" />
+    <Compile Include="APIwrapper.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
