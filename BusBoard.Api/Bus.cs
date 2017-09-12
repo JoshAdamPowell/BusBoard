@@ -24,5 +24,18 @@ namespace BusBoard.Api
             return JsonConvert.DeserializeObject<List<Bus>>(response.Content);
         }
 
+        public string GetTheArrivalTime()
+        {
+            return SecondsToMinutes(timeToStation);
+        }
+
+        private static string SecondsToMinutes(int seconds)
+        {
+            int mins = seconds / 60;
+            int newSecond = seconds % 60;
+            return mins.ToString() + ":" + newSecond.ToString();
+
+        }
+
     }
 }

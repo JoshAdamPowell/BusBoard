@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using BusBoard.Api;
 
 namespace BusBoard.Web.ViewModels
 {
   public class BusInfo
   {
-    public BusInfo(List<string> strings )
+    public BusInfo(List<StopPoints> stopPoints )
     {
-      Strings = strings;
+            StopPoints = stopPoints;
     }
 
-    public List<string> Strings { get; set; }
+    public List<StopPoints> StopPoints { get; set; }
 
   }
 }

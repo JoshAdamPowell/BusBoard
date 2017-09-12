@@ -1,19 +1,56 @@
-﻿@model BusBoard.Web.ViewModels.BusInfo
+﻿
+
+@model BusBoard.Web.ViewModels.BusInfo
+
 @{
     ViewBag.Title = "Bus Information";
 }
-
+<head>
+    <meta http-equiv="refresh" content="30">
+</head>
 <h2>BusInfo</h2>
 
 <div class="row">
-   @{ 
-       foreach (var s3 in Model.Strings)
+   @{
+       foreach (var stopPoint in Model.StopPoints)
        {
-           <p>@s3</p>
+        <table border="1">
+            <tr>
+                <th colspan="3">
+                    @stopPoint.commonName
+                </th>
+                </tr>
+            <tr>
+                <th>
+                    <b>Line Number</b>
+                </th>
+                <th>
+                    <b>Destination Name</b>
+                </th>
+                <th>
+                    <b>Arrival Time</b>
+                </th>
+            </tr>
+            @foreach (var bus in stopPoint.GetNext5Buses())
+            {
+                <tr>
+                    <td>
+                        @bus.lineId
+                    </td>
+                    <td>
+                        @bus.destinationName
+                    </td>
+                    <td>
+                        @bus.GetTheArrivalTime()
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
        }
 
 
-    }
+}
 
     
 

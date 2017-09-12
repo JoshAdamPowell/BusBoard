@@ -2,8 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
-
-
+using System.Linq;
 
 namespace BusBoard.Api
 {
@@ -11,6 +10,17 @@ namespace BusBoard.Api
     {
         public string id;
         public string commonName;
+        
+        public static List<StopPoints> GetFiveStopPoints(Location location)
+        {
+            var sp = GetStopPointList(location);
+            var fiveStopPoints = new List<StopPoints>();
+            for (int stopPointNumber = 0; stopPointNumber < sp.Count() && stopPointNumber < 5; stopPointNumber++)
+            {
+                fiveStopPoints.Add(sp[stopPointNumber]);
+            }
+            return fiveStopPoints;
+        }
 
         public static List<StopPoints> GetStopPointList(Location location)
         {
@@ -30,9 +40,25 @@ namespace BusBoard.Api
                 return null;
             }
             var apiWrapperStops = JsonConvert.DeserializeObject<APIWrapperStops>(response.Content);
+
+
             return apiWrapperStops.stopPoints;
 
         }
+
+        public List<Bus> GetNext5Buses()
+        {
+            var buses = Bus.GetListOfBuses(id).OrderBy(x => x.timeToStation).ToList<Bus>();
+            var fiveBuses = new List<Bus>();
+            for (int busNumber = 0; busNumber < buses.Count() && busNumber < 5; busNumber++)
+            {
+                fiveBuses.Add(buses[busNumber]);
+
+            }
+            return fiveBuses;           
+        }
+
+       
 
     }
 }
