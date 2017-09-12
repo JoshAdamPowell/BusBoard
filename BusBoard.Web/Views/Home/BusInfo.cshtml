@@ -2,24 +2,20 @@
 @{
     ViewBag.Title = "Bus Information";
 }
-@using BusBoard.Api;
-@using Newtonsoft.Json;
+
 <h2>BusInfo</h2>
 
 <div class="row">
-    @if (@Model.PostCode == "NW5 1TL")
-    {
-        <p>You entered the Softwire office postcode!</p>
-    }
-    else
-    {
-        <p>You entered postcode @Model.PostCode</p>
+   @{ 
+       foreach (var s3 in Model.Strings)
+       {
+           <p>@s3</p>
+       }
+
+
     }
 
     
 
-    <p>This is the test string! @StringPrinter.TestFunction("HelloWorld"); </p>
-
-    
 
 </div>

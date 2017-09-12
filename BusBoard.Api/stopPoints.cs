@@ -3,12 +3,19 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 
+
+
 namespace BusBoard.Api
 {
     public class StopPoints
     {
         public string id;
         public string commonName;
+
+        public static List<StopPoints> GetStopPointList(Location location)
+        {
+            return GetStopPointList(location.longitude, location.latitude);
+        }
 
         public static List<StopPoints> GetStopPointList(string lon, string lat)
         {
