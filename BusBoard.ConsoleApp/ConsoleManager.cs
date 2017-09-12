@@ -6,6 +6,7 @@ namespace BusBoard.ConsoleApp
 {
     public class ConsoleManager
     {
+        /*
         public static void Print5BusStops(List<StopPoints> stopPointsList)
         {
 
@@ -43,6 +44,7 @@ namespace BusBoard.ConsoleApp
             Console.WriteLine("Please enter postCode");
             return Console.ReadLine();
         }
+        */
 
     }
 }

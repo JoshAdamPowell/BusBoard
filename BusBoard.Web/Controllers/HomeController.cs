@@ -39,8 +39,8 @@ namespace BusBoard.Web.Controllers
                 
             }
 
-            var info = new BusInfo(stopPoints, postCodeValid);
-
+            var info = new BusInfo(stopPoints, postCodeValid, BusFactory.CreateStatusDictionary(stopPoints));
+            
 
 
             return View(info);

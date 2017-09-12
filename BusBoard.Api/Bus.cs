@@ -15,7 +15,7 @@ namespace BusBoard.Api
         public string destinationName;
 
         public int timeToStation;
-
+        public string status;
         
 
         public string GetTheArrivalTime()
@@ -26,7 +26,6 @@ namespace BusBoard.Api
         private string SecondsToMinutes(int seconds)
         {
             return DateTime.Now.AddSeconds(seconds).ToShortTimeString();
-            
         }
 
     }
