@@ -16,25 +16,17 @@ namespace BusBoard.Api
 
         public int timeToStation;
 
-        public static List<Bus> GetListOfBuses(string busCode)
-        {
-            
-            string resource = @"StopPoint/940GZZLUASL/Arrivals?app_id=731f9517&app_key=54b0b22e2a48aea8cb6e465f09897657&id=" + busCode;
-            IRestResponse response  = URLManager.GetAPIResponse(@"https://api.tfl.gov.uk", resource); 
-            return JsonConvert.DeserializeObject<List<Bus>>(response.Content);
-        }
+        
 
         public string GetTheArrivalTime()
         {
             return SecondsToMinutes(timeToStation);
         }
 
-        private static string SecondsToMinutes(int seconds)
+        private string SecondsToMinutes(int seconds)
         {
-            int mins = seconds / 60;
-            int newSecond = seconds % 60;
-            return mins.ToString() + ":" + newSecond.ToString();
-
+            return DateTime.Now.AddSeconds(seconds).ToShortTimeString();
+            
         }
 
     }

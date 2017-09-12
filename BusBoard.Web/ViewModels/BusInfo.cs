@@ -5,10 +5,13 @@ namespace BusBoard.Web.ViewModels
 {
   public class BusInfo
   {
-    public BusInfo(List<StopPoints> stopPoints )
+    public BusInfo(List<StopPoints> stopPoints, bool validPostCode )
     {
             StopPoints = stopPoints;
+            ValidPostCode = validPostCode;
     }
+
+        public bool ValidPostCode;
 
     public List<StopPoints> StopPoints { get; set; }
 

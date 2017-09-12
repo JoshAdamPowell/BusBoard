@@ -49,8 +49,10 @@
     <Compile Include="APIwrapper.cs" />
     <Compile Include="APIWrapperStops.cs" />
     <Compile Include="Bus.cs" />
+    <Compile Include="BusFactory.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StopPointFactory.cs" />
     <Compile Include="stopPoints.cs" />
     <Compile Include="StringPrinter.cs" />
     <Compile Include="URLManager.cs" />
