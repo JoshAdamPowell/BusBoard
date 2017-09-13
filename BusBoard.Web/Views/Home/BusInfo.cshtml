@@ -10,63 +10,83 @@
 </head>
 <h2>BusInfo</h2>
 
+
+
+
 <div class="row">
-   @{
-<h4>Page last refreshed at @DateTime.Now.ToShortTimeString()</h4>
-       if (Model.ValidPostCode)
-       {
-           foreach (var stopPoint in Model.StopPoints)
-           {
-        <table class="table-striped" border="1" style="width: 100%">
-            <tr>
-                <th colspan="12">
-                    @stopPoint.commonName
-                </th>
-                </tr>
-            <tr>
-                <th>
-                    <b>Line Number</b>
-                </th>
-                <th>
-                    <b>Destination Name</b>
-                </th>
-                <th>
-                    <b>Arrival Time</b>
-                </th>
-                <th>
-                    <b>Status</b>
-                </th>
-            </tr>
-            @foreach (var bus in stopPoint.GetNext5Buses())
+    
+        <h4>Page last refreshed at @DateTime.Now.ToShortTimeString()</h4>
+        @{if (Model.ValidPostCode)
+        {
+            foreach (var stopPoint in Model.StopPoints)
             {
-                <tr>
-                    <td>
-                        @bus.lineId
-                    </td>
-                    <td>
-                        @bus.destinationName
-                    </td>
-                    <td>
-                        @bus.GetTheArrivalTime()
-                    </td>
-                    <td>
-                        @Model.StatusDictionary[bus.lineId]
-                                
-                    </td>
-                </tr>
+                <table class="table-striped" border="1" style="width: 100%">
+                    <tr>
+                        <th colspan="12">
+                            @stopPoint.commonName
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <b>Line Number</b>
+                        </th>
+                        <th>
+                            <b>Destination Name</b>
+                        </th>
+                        <th>
+                            <b>Arrival Time</b>
+                        </th>
+                        <th>
+                            <b>Status</b>
+                        </th>
+                    </tr>
+                    @foreach (var bus in stopPoint.GetNext5Buses())
+                    {
+                        string bgColour = "";
+                        {
+                            if (Model.StatusDictionary[bus.lineId] == "Good Service")
+                            {
+                                bgColour = "#00FF00";
+                            }
+                            else if(Model.StatusDictionary[bus.lineId] == "Special Service")
+                            {
+                                bgColour = "#FFEC33";
+                            }
+                            else
+                            {
+                                bgColour = "#FFFFFF";
+                            }
+
+                        <tr>
+                            <td>
+                                @bus.lineId
+                            </td>
+                            <td>
+                                @bus.destinationName
+                            </td>
+                            <td>
+                                @bus.GetTheArrivalTime()
+                            </td>
+                            <td style="background-color:@bgColour">
+                                @Model.StatusDictionary[bus.lineId]
+
+                            </td>
+                        </tr>
+                        }
+                    }
+
+                </table>
+                <br />
             }
-        </table>
-        <br />
-           }
 
-       }
-       else
-       {
-           <h1>This Postcode is Invalid.</h1>
+        }
+        else
+        {
+            <h1>This Postcode is Invalid.</h1>
 
-       }
-    <a href="~/Home/Index"><h3>Return to homepage</h3></a>
-}
+        }
+        <a href="~/Home/Index"><h3>Return to homepage</h3></a>
+    }
 
 
 
